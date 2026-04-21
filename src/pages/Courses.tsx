@@ -116,6 +116,12 @@ export default function Courses() {
         </button>
         <div className="flex items-center gap-4">
           <button
+            onClick={() => navigate("/jobs")}
+            className="font-mono text-sm text-foreground/60 transition-colors hover:text-foreground"
+          >
+            Вакансии
+          </button>
+          <button
             onClick={() => navigate("/dashboard")}
             className="font-mono text-sm text-foreground/60 transition-colors hover:text-foreground"
           >

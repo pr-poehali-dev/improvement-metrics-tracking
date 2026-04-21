@@ -145,7 +145,13 @@ export default function Dashboard() {
             onClick={() => navigate("/courses")}
             className="font-mono text-sm text-foreground/60 transition-colors hover:text-foreground"
           >
-            Каталог курсов
+            Курсы
+          </button>
+          <button
+            onClick={() => navigate("/jobs")}
+            className="font-mono text-sm text-foreground/60 transition-colors hover:text-foreground"
+          >
+            Вакансии
           </button>
           {student && (
             <button
@@ -180,6 +186,7 @@ export default function Dashboard() {
             uniqueSkills={uniqueSkills}
             onUpdateProgress={updateProgress}
             onGoToCourses={() => navigate("/courses")}
+            onGoToJobs={() => navigate("/jobs")}
           />
         )}
       </main>
@@ -252,6 +259,7 @@ function StudentDashboard({
   uniqueSkills,
   onUpdateProgress,
   onGoToCourses,
+  onGoToJobs,
 }: {
   student: Student
   enrollments: Enrollment[]
@@ -260,6 +268,7 @@ function StudentDashboard({
   uniqueSkills: string[]
   onUpdateProgress: (id: number, p: number) => void
   onGoToCourses: () => void
+  onGoToJobs: () => void
 }) {
   const completed = enrollments.filter((e) => e.status === "completed").length
   const active = enrollments.filter((e) => e.status === "active").length
@@ -274,10 +283,17 @@ function StudentDashboard({
           </h1>
           <p className="font-mono text-sm text-foreground/40">{student.email}</p>
         </div>
-        <div className="hidden gap-6 md:flex">
+        <div className="hidden items-start gap-6 md:flex">
           <Stat value={String(active)} label="Активных курсов" />
           <Stat value={String(completed)} label="Завершено" />
           <Stat value={String(uniqueSkills.length)} label="Навыков" />
+          <button
+            onClick={onGoToJobs}
+            className="flex items-center gap-1.5 rounded-full bg-accent/15 px-4 py-2 font-mono text-xs text-accent transition-colors hover:bg-accent/25"
+          >
+            <Icon name="Target" size={12} />
+            Мои вакансии
+          </button>
         </div>
       </div>
 
@@ -319,7 +335,7 @@ function StudentDashboard({
       )}
 
       {activeTab === "skillmap" && (
-        <SkillMap uniqueSkills={uniqueSkills} onGoToCourses={onGoToCourses} />
+        <SkillMap uniqueSkills={uniqueSkills} onGoToCourses={onGoToCourses} onGoToJobs={onGoToJobs} />
       )}
     </div>
   )
@@ -397,7 +413,7 @@ function EnrollmentCard({
   )
 }
 
-function SkillMap({ uniqueSkills, onGoToCourses }: { uniqueSkills: string[]; onGoToCourses: () => void }) {
+function SkillMap({ uniqueSkills, onGoToCourses, onGoToJobs }: { uniqueSkills: string[]; onGoToCourses: () => void; onGoToJobs: () => void }) {
   return (
     <div className="space-y-6">
       <div className="rounded-2xl border border-foreground/10 bg-foreground/5 p-6">
@@ -454,14 +470,28 @@ function SkillMap({ uniqueSkills, onGoToCourses }: { uniqueSkills: string[]; onG
         })}
       </div>
 
-      <div className="rounded-2xl border border-dashed border-foreground/15 p-6 text-center">
-        <p className="mb-3 text-sm text-foreground/50">Хотите прокачать новые навыки?</p>
-        <button
-          onClick={onGoToCourses}
-          className="rounded-full bg-primary/20 px-6 py-2 font-mono text-sm text-primary transition-colors hover:bg-primary/30"
-        >
-          Смотреть курсы
-        </button>
+      <div className="grid gap-3 md:grid-cols-2">
+        <div className="rounded-2xl border border-dashed border-foreground/15 p-5 text-center">
+          <p className="mb-3 text-sm text-foreground/50">Прокачать новые навыки?</p>
+          <button
+            onClick={onGoToCourses}
+            className="rounded-full bg-primary/20 px-5 py-2 font-mono text-sm text-primary transition-colors hover:bg-primary/30"
+          >
+            Смотреть курсы
+          </button>
+        </div>
+        <div className="rounded-2xl border border-dashed border-accent/20 p-5 text-center">
+          <p className="mb-3 text-sm text-foreground/50">Найти подходящую работу?</p>
+          <button
+            onClick={onGoToJobs}
+            className="rounded-full bg-accent/15 px-5 py-2 font-mono text-sm text-accent transition-colors hover:bg-accent/25"
+          >
+            <span className="flex items-center gap-1.5">
+              <Icon name="Target" size={13} />
+              HR-матчинг вакансий
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   )

@@ -1,0 +1,18 @@
+{
+  "tests": [
+    {
+      "name": "Get all vacancies",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "bodyMatcher": "none"
+    },
+    {
+      "name": "Get vacancies with student matching",
+      "method": "GET",
+      "path": "/?student_id=1",
+      "expectedStatus": 200,
+      "bodyMatcher": "none"
+    }
+  ]
+}
