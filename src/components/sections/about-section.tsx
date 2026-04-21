@@ -1,8 +1,10 @@
 import { MagneticButton } from "@/components/magnetic-button"
 import { useReveal } from "@/hooks/use-reveal"
+import { useNavigate } from "react-router-dom"
 
 export function AboutSection({ scrollToSection }: { scrollToSection?: (index: number) => void }) {
   const { ref, isVisible } = useReveal(0.3)
+  const navigate = useNavigate()
 
   return (
     <section
@@ -79,10 +81,10 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           }`}
           style={{ transitionDelay: "750ms" }}
         >
-          <MagneticButton size="lg" variant="primary" onClick={() => scrollToSection?.(4)}>
+          <MagneticButton size="lg" variant="primary" onClick={() => navigate("/dashboard")}>
             Зарегистрироваться
           </MagneticButton>
-          <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection?.(1)}>
+          <MagneticButton size="lg" variant="secondary" onClick={() => navigate("/courses")}>
             Смотреть курсы
           </MagneticButton>
         </div>

@@ -7,8 +7,10 @@ import { AboutSection } from "@/components/sections/about-section"
 import { ContactSection } from "@/components/sections/contact-section"
 import { MagneticButton } from "@/components/magnetic-button"
 import { useRef, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function Index() {
+  const navigate = useNavigate()
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [currentSection, setCurrentSection] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -244,7 +246,7 @@ export default function Index() {
           ))}
         </div>
 
-        <MagneticButton variant="secondary" onClick={() => scrollToSection(4)}>
+        <MagneticButton variant="secondary" onClick={() => navigate("/dashboard")}>
           Попробовать бесплатно
         </MagneticButton>
       </nav>
@@ -281,11 +283,11 @@ export default function Index() {
               <MagneticButton
                 size="lg"
                 variant="primary"
-                onClick={() => scrollToSection(4)}
+                onClick={() => navigate("/dashboard")}
               >
                 Начать бесплатно
               </MagneticButton>
-              <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection(2)}>
+              <MagneticButton size="lg" variant="secondary" onClick={() => navigate("/courses")}>
                 Посмотреть курсы
               </MagneticButton>
             </div>

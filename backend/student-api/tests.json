@@ -1,0 +1,22 @@
+{
+  "tests": [
+    {
+      "name": "Login existing student",
+      "method": "POST",
+      "path": "/",
+      "body": {"email": "alex@example.com"},
+      "expectedStatus": 200,
+      "expectedBody": {"student": {}},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Create new student",
+      "method": "POST",
+      "path": "/",
+      "body": {"email": "newstudent@test.com", "name": "Test Student"},
+      "expectedStatus": 200,
+      "expectedBody": {"student": {}},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
