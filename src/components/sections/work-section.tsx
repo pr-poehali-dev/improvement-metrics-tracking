@@ -15,32 +15,32 @@ export function WorkSection() {
           }`}
         >
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Проекты
+            Курсы
           </h2>
-          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Избранные работы</p>
+          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Каталог программ</p>
         </div>
 
         <div className="space-y-6 md:space-y-8">
           {[
             {
               number: "01",
-              title: "ТехноСтарт",
-              category: "Корпоративный портал",
-              year: "2024",
+              title: "Frontend-разработка",
+              category: "React · TypeScript · Real Project Lab",
+              year: "MVP",
               direction: "left",
             },
             {
               number: "02",
-              title: "АльфаТрейд",
-              category: "Финтех платформа",
-              year: "2024",
+              title: "Backend & API",
+              category: "Python · PostgreSQL · Реальные задачи",
+              year: "MVP",
               direction: "right",
             },
             {
               number: "03",
-              title: "МедиаПульс",
-              category: "Медиа сервис",
-              year: "2023",
+              title: "Skill Map: Карьерный трек",
+              category: "Аналитика навыков · HR-матчинг · Портфолио",
+              year: "Скоро",
               direction: "left",
             },
           ].map((project, i) => (
@@ -88,7 +88,7 @@ function ProjectCard({
           <p className="font-mono text-xs text-foreground/50 md:text-sm">{project.category}</p>
         </div>
       </div>
-      <span className="font-mono text-xs text-foreground/30 md:text-sm">{project.year}</span>
+      <span className="rounded-full border border-foreground/20 px-3 py-1 font-mono text-xs text-foreground/50 md:text-sm">{project.year}</span>
     </div>
   )
 }

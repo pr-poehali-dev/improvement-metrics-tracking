@@ -15,31 +15,31 @@ export function ServicesSection() {
           }`}
         >
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Услуги
+            Возможности
           </h2>
-          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Наши компетенции</p>
+          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Что даёт SkillOrbit</p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 md:gap-x-16 md:gap-y-12 lg:gap-x-24">
           {[
             {
-              title: "Веб-разработка",
-              description: "Создание современных веб-приложений любой сложности",
+              title: "Real Project Lab",
+              description: "Решай реальные задачи от компаний-партнёров вместо учебных примеров. Результат — в портфолио.",
               direction: "top",
             },
             {
-              title: "UI/UX Дизайн",
-              description: "Проектирование удобных и красивых интерфейсов",
+              title: "Skill Map",
+              description: "Персональная карта навыков с пробелами и рекомендациями. Видишь, что учить дальше.",
               direction: "right",
             },
             {
-              title: "Мобильные приложения",
-              description: "Кроссплатформенная разработка для iOS и Android",
+              title: "HR-матчинг вакансий",
+              description: "Алгоритм подбирает подходящие вакансии по твоим навыкам ещё в процессе обучения.",
               direction: "left",
             },
             {
-              title: "Консалтинг",
-              description: "Техническая экспертиза и стратегическое планирование",
+              title: "Песочница с кодом",
+              description: "Встроенная среда разработки прямо в браузере — пиши и запускай код без лишних настроек.",
               direction: "bottom",
             },
           ].map((service, i) => (
